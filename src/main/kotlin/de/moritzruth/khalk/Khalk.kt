@@ -69,7 +69,7 @@ private class KhalkContextAppenderDelegate(private val style: KhalkStyle) {
     }
 }
 
-class KhalkContext internal constructor(internal val parentStyles: Set<KhalkStyle>, internal val ownStyles: Set<KhalkStyle>) {
+open class KhalkContext internal constructor(internal val parentStyles: Set<KhalkStyle>, internal val ownStyles: Set<KhalkStyle>) {
     val bold by KhalkContextAppenderDelegate(KhalkStyle.BOLD)
     val dim by KhalkContextAppenderDelegate(KhalkStyle.DIM)
     val italic by KhalkContextAppenderDelegate(KhalkStyle.ITALIC)
@@ -126,5 +126,4 @@ class KhalkContext internal constructor(internal val parentStyles: Set<KhalkStyl
     }
 }
 
-val Khalk = KhalkContext(emptySet(), emptySet())
-fun khalk(fn: KhalkContext.() -> String) = Khalk.fn()
+class Khalk: KhalkContext(emptySet(), emptySet())
