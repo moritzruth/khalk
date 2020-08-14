@@ -8,13 +8,13 @@ internal enum class KhalkStyleGroup {
     BG_COLOR
 }
 
-internal enum class KhalkStyle(private val openCode: Int, private val closeCode: Int, val group: KhalkStyleGroup) {
+internal enum class KhalkStyle(private val openCode: Int, private val closeCode: Int, val group: KhalkStyleGroup?) {
     BOLD(1, 22, KhalkStyleGroup.MODIFIER),
-    DIM(2, 22, KhalkStyleGroup.MODIFIER),
+    DIM(2, 22, null),
     ITALIC(3, 23, KhalkStyleGroup.MODIFIER),
-    UNDERLINE(4, 24, KhalkStyleGroup.MODIFIER),
-    INVERSE(7, 27, KhalkStyleGroup.MODIFIER),
-    STRIKETHROUGH(9, 29, KhalkStyleGroup.MODIFIER),
+    UNDERLINE(4, 24, null),
+    INVERSE(7, 27, null),
+    STRIKETHROUGH(9, 29, null),
 
     BLACK(30, 39, KhalkStyleGroup.FG_COLOR),
     RED(31, 39, KhalkStyleGroup.FG_COLOR),
@@ -64,7 +64,7 @@ private class KhalkContextAppenderDelegate(private val style: KhalkStyle) {
     private var value: KhalkContext? = null
 
     operator fun getValue(thisRef: KhalkContext, property: KProperty<*>): KhalkContext {
-        if (value == null) value = KhalkContext(thisRef.parentStyles, thisRef.ownStyles.filter { it.group != style.group }.toSet() + style)
+        if (value == null) value = KhalkContext(thisRef.parentStyles, thisRef.ownStyles.filter { it.group == null || it.group != style.group }.toSet() + style)
         return value!!
     }
 }
