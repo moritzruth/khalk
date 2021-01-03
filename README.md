@@ -42,10 +42,10 @@ println(khalk { green.underline.bold { "Hello world!" }})
 #### Modifiers
 - `bold`
 - `dim`
-- `italic` - not supported very well
+- `italic` - Not supported very well
 - `underline`
 - `inverse` - Swaps the background color with the foreground color
-- `strikethrough` - not supported very well
+- `strikethrough` - Not supported very well
 
 #### Foreground colors
 - `black`
