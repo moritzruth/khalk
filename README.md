@@ -1,5 +1,5 @@
 # Khalk
-> Khalk (pronounced like chalk) is a minimal Kotlin DSL for coloring console output
+> Khalk is a minimal Kotlin DSL for coloring console output
 
 ## Installation
 ![Release](https://jitpack.io/v/de.moritzruth/khalk.svg?style=flat-square)
